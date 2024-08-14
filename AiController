@@ -1,0 +1,21 @@
+public class AiController {
+
+
+    private Rectangle ballRectangle;
+    private  PlayerController playerController;
+
+
+    public AiController(Rectangle ballRectangle,PlayerController playerController){
+        this.playerController=playerController;
+        this.ballRectangle=ballRectangle;
+    }
+
+    public void update(double dt){
+        playerController.update(dt);
+        if(ballRectangle.getY()+ballRectangle.getHeight()>playerController.getRectangle().getY()+playerController.getRectangle().getHeight()){
+            playerController.moveDown(dt);
+        } else if (ballRectangle.getY()<playerController.getRectangle().getY()) {
+            playerController.moveUp(dt);
+        }
+    }
+}
